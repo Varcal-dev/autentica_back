@@ -1,10 +1,9 @@
 package com.varcal.ecommer.Services.Impl;
 
-
-
 import org.springframework.stereotype.Service;
 
 import com.varcal.ecommer.Models.Producto;
+import com.varcal.ecommer.Models.Usuario;
 import com.varcal.ecommer.Repos.ProductoRepository;
 import com.varcal.ecommer.Services.ProductoService;
 
@@ -25,10 +24,10 @@ public class ProductoServiceImpl implements ProductoService {
         return productoRepository.findAll();
     }
 
-    @Override
-    public Optional<Producto> obtenerPorId(Long id) {
-        return productoRepository.findById(id);
-    }
+  public Producto obtenerPorId(Long id) {
+    return productoRepository.findById(id)
+            .orElseThrow(() -> new RuntimeException("Producto no encontrado con id: " + id));
+}
 
     @Override
     public List<Producto> listarPorCategoria(Long idCategoria) {

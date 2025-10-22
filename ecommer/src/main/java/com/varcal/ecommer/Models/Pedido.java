@@ -28,6 +28,13 @@ public class Pedido {
     @Enumerated(EnumType.STRING)
     private EstadoPedido estado = EstadoPedido.PENDIENTE;
 
+    @ManyToOne
+    @JoinColumn(name = "id_cupon")
+    private Cupon cupon;
+
+    @Column(name = "descuento_aplicado")
+    private Double descuentoAplicado;
+
     private Double subtotal = 0.0;
     private Double impuestos = 0.0;
     private Double costosEnvio = 0.0;
@@ -41,4 +48,3 @@ public class Pedido {
     @OneToMany(mappedBy = "pedido", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<DetallePedido> detalles;
 }
-

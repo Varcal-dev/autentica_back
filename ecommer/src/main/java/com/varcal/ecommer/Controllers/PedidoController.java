@@ -24,7 +24,7 @@ public class PedidoController {
     public Pedido crearPedido(@RequestParam Integer idCarrito,
                               @RequestParam String metodoPago,
                               @RequestBody DireccionUsuario direccion) {
-        return pedidoService.crearPedidoDesdeCarrito(idCarrito, metodoPago, direccion);
+        return pedidoService.crearPedidoDesdeCarrito(idCarrito, metodoPago, direccion, metodoPago);
     }
 
     @GetMapping("/usuario/{idUsuario}")

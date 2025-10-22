@@ -19,9 +19,11 @@ public class UsuarioService {
         return usuarioRepository.findAll();
     }
 
-    public Optional<Usuario> obtenerPorId(Long id) {
-        return usuarioRepository.findById(id);
-    }
+    public Usuario obtenerPorId(Long id) {
+    return usuarioRepository.findById(id)
+            .orElseThrow(() -> new RuntimeException("Usuario no encontrado con id: " + id));
+}
+
 
     public Usuario crear(Usuario usuario) {
         usuario.setFechaRegistro(java.time.LocalDateTime.now());

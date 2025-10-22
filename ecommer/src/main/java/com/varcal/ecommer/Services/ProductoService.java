@@ -7,7 +7,7 @@ import com.varcal.ecommer.Models.Producto;
 
 public interface ProductoService {
     List<Producto> listar();
-    Optional<Producto> obtenerPorId(Long id);
+    Producto obtenerPorId(Long id);
     List<Producto> listarPorCategoria(Long idCategoria);
     Producto crear(Producto producto);
     Producto actualizar(Long id, Producto producto);
