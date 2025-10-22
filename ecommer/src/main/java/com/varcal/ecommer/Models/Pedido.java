@@ -28,7 +28,10 @@ public class Pedido {
     @Enumerated(EnumType.STRING)
     private EstadoPedido estado = EstadoPedido.PENDIENTE;
 
-    private Double total;
+    private Double subtotal = 0.0;
+    private Double impuestos = 0.0;
+    private Double costosEnvio = 0.0;
+    private Double total = 0.0;
     private String metodoPago;
 
     private LocalDateTime fechaPedido = LocalDateTime.now();
@@ -39,4 +42,3 @@ public class Pedido {
     private List<DetallePedido> detalles;
 }
 
-enum EstadoPedido { PENDIENTE, PAGADO, EN_PROCESO, ENVIADO, ENTREGADO, CANCELADO }

@@ -8,7 +8,9 @@ import com.varcal.ecommer.Models.Usuario;
 import java.util.List;
 
 public interface PedidoRepository extends JpaRepository<Pedido, Integer> {
-    List<Pedido> findByUsuarioId(Long usuarioId);
+    List<Pedido> findByUsuario_IdUsuario(Integer idUsuario);
 
     void deleteById(Integer usuarioId);
+
+    List<Pedido> findByUsuarioOrderByFechaPedidoDesc(Usuario usuario);
 }
