@@ -2,6 +2,8 @@ package com.varcal.ecommer.Models;
 
 import java.time.LocalDateTime;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -27,7 +29,8 @@ public class DireccionUsuario {
     private Integer idDireccion;
 
     @ManyToOne
-    @JoinColumn(name = "id_usuario", nullable = false)
+    @JoinColumn(name = "usuario_id")
+    @JsonBackReference
     private Usuario usuario;
 
     private String direccion;

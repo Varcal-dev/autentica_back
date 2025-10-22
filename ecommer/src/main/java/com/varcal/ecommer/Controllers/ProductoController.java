@@ -1,6 +1,5 @@
 package com.varcal.ecommer.Controllers;
 
-
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -27,9 +26,8 @@ public class ProductoController {
 
     @GetMapping("/{id}")
     public ResponseEntity<Producto> obtenerPorId(@PathVariable Long id) {
-        return productoService.obtenerPorId(id)
-                .map(ResponseEntity::ok)
-                .orElse(ResponseEntity.notFound().build());
+        Producto producto = productoService.obtenerPorId(id);
+        return producto != null ? ResponseEntity.ok(producto) : ResponseEntity.notFound().build();
     }
 
     @GetMapping("/categoria/{idCategoria}")

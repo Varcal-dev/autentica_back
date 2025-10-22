@@ -20,7 +20,8 @@ public class ResenaService {
 
     public Resena crearResena(Long idProducto, Long idUsuario, String comentario, Integer calificacion) {
         Producto producto = productoService.obtenerPorId(idProducto);
-        Usuario usuario = usuarioService.obtenerPorId(idUsuario);
+        Usuario usuario = usuarioService.obtenerPorId(idUsuario)
+            .orElseThrow(() -> new RuntimeException("Usuario no encontrado"));
 
         Resena resena = Resena.builder()
                 .producto(producto)
@@ -38,8 +39,10 @@ public class ResenaService {
     }
 
     public List<Resena> listarResenasPorUsuario(Long idUsuario) {
-        Usuario usuario = usuarioService.obtenerPorId(idUsuario);
-        return resenaRepository.findByUsuario(usuario);
-    }
+    Usuario usuario = usuarioService.obtenerPorId(idUsuario)
+            .orElseThrow(() -> new RuntimeException("Usuario no encontrado"));
+    return resenaRepository.findByUsuario(usuario);
+}
+
 
 }

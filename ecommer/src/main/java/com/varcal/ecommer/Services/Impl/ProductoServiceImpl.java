@@ -24,10 +24,9 @@ public class ProductoServiceImpl implements ProductoService {
         return productoRepository.findAll();
     }
 
-  public Producto obtenerPorId(Long id) {
-    return productoRepository.findById(id)
-            .orElseThrow(() -> new RuntimeException("Producto no encontrado con id: " + id));
-}
+    public Producto obtenerPorId(Long id) {
+        return productoRepository.findById(id).orElse(null);
+    }
 
     @Override
     public List<Producto> listarPorCategoria(Long idCategoria) {
